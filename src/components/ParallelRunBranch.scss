@@ -7,7 +7,7 @@
   align-items: center;
 
   .content-box {
-    grid-column: 1;
+    grid-column-start: 1;
     grid-row-start: 2;
     place-self: flex-start;
     background-color: #6f2b85;
@@ -22,9 +22,8 @@
 
   .line {
     position: relative;
-
     &.top-line {
-      grid-column: 7 / span 1;
+      grid-column: 1;
       grid-row: 1;
       width: 1px;
       height: 60px;
@@ -34,7 +33,7 @@
 
       & {
         grid-column-start: initial;
-        width: 50px;
+        width: 40px;
         height: 100px;
         border: 1px solid red;
         border-right: none;
@@ -45,7 +44,7 @@
       .arrow.up {
         position: absolute;
         top: -5px;
-        left: 50px;
+        left: 40px;
         width: 0;
         height: 0;
         border-top: 5px solid transparent;
@@ -55,16 +54,12 @@
     }
 
     &.right-line {
-      grid-column: 8 / span 1;
+      grid-column: 1;
       grid-row: 2;
-
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
       & {
         background: blue;
         height: 1px;
-        width: 16px;
+        width: 40px;
       }
       .arrow.right {
         position: absolute;
@@ -90,7 +85,7 @@
 
       & {
         grid-column-start: initial;
-        width: 50px;
+        width: 40px;
         height: 100px;
         border: 1px solid red;
         border-top: none;
@@ -98,11 +93,10 @@
         border-bottom-left-radius: 12px;
       }
 
-      /* Arrow at the end of the horizontal line */
       .arrow.down {
         position: absolute;
         bottom: -6px;
-        left: 50px;
+        left: 40px;
         width: 0;
         height: 0;
         border-top: 5px solid transparent;
