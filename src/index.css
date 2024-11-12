@@ -1,0 +1,52 @@
+.project-node {
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.module-node {
+  font-weight: normal;
+  color: #673ab7;
+}
+
+.action-node {
+  font-weight: normal;
+  color: #ff5722;
+}
+
+.tree-structure {
+  position: relative;
+  padding-left: 20px;
+}
+
+.tree-line-vertical {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 100%;
+  width: 1px;
+  background-color: #c2a4cd;
+  z-index: 0;
+}
+
+.tree-line-horizontal {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  background-color: #c2a4cd;
+  z-index: 0;
+}
+
+.tree-structure.has-children .tree-line-vertical {
+  display: block;
+}
+
+.tree-structure.last-child .tree-line-vertical {
+  display: none;
+}
+
+.tree-structure:not(.has-children) .tree-line-vertical,
+.tree-structure:not(.has-children) .tree-line-horizontal {
+  display: none;
+}
