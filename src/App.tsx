@@ -1,5 +1,6 @@
 import React from 'react'
 import ParallelRunBranch from './components/ParallelRunBranch'
+import ConnectingBranch from './mainComponents/ConnectingBranch'
 
 
 
@@ -7,7 +8,8 @@ import ParallelRunBranch from './components/ParallelRunBranch'
 const App: React.FC = () => {
   return (
     <div className="app">
-<ParallelRunBranch/>
+{/* <ParallelRunBranch/> */}
+<ConnectingBranch/>
     </div>
   )
 }
