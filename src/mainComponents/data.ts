@@ -43,6 +43,23 @@ export const machineData = {
                   globalVariableSetId: "UUID",
                   testDataSetId: "UUID",
                 },
+                {
+                  peVariableSetId: "UUID_1",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },   {
+                  peVariableSetId: "UUID_1",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },   {
+                  peVariableSetId: "UUID_1",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },   {
+                  peVariableSetId: "UUID_1",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },
               ],
             },
             {
@@ -136,9 +153,7 @@ export const machineData = {
             testDataSetId: "UUID",
           },
           totalScript: 450,
-          machineInstances: [
-        
-          ],
+          machineInstances: [],
         },
       ],
       executionType: "SEND_SUITE_TO_ALL",

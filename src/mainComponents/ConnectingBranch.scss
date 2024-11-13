@@ -191,11 +191,195 @@
 // }
 
 
+// 222
+// .grid-container {
+//   display: grid;
+//   grid-template-columns: 3fr 1fr 8fr;
+//   gap: 10px;
+//   border: 1px solid rgb(0, 38, 255);
+//   padding: 24px 0;
+// }
+
+// .selectedMachines {
+//   display: contents;
+// }
+
+// .selectedMachines-input {
+//   grid-column: 1 / 2;
+//   display: flex;
+//   justify-content: flex-start;
+//   padding: 8px;
+
+//   input {
+//     width: 100%;
+//     padding: 4px;
+//   }
+// }
+
+// /* Aligns each machine instance row correctly */
+// .machine-instance-row {
+//   display: contents; /* Allows each child to respect grid-container columns */
+// }
+
+// /* Connecting line and instances */
+// .selectedMachines-connecting-line {
+//   grid-column: 2 / 3;
+//   display: flex;
+//   justify-content: flex-start; /* Align items from the left */
+//   align-items: center;
+//   position: relative;
+
+//   .line {
+//     position: relative;
+//     height: 1px;
+//     background-color: blue;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     width: 100%; /* Ensures the line spans across */
+//   }
+
+//   /* Left and Right Icons */
+//   .left-icon {
+//     height: 10px;
+//     width: 10px;
+//     background-color: black;
+//     border-radius: 50%;
+//     margin-right: 5px;
+//   }
+
+//   .selectedMachines-connecting-line-text {
+//     position: absolute;
+//     top: -10px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     background-color: #7e4b91;
+//     color: #fff;
+//     font-weight: bold;
+//     font-size: 8px;
+//     padding: 4px;
+//     border-radius: 12px;
+//     text-align: center;
+//   }
+
+//   .right-icon {
+//     width: 0;
+//     height: 0;
+//     border-top: 5px solid transparent;
+//     border-bottom: 5px solid transparent;
+//     border-left: 5px solid #6f2b85;
+//     margin-left: 5px;
+//   }
+
+//   /* Second line adjustment */
+//   &.second-line {
+//     position: relative;
+//     margin-left: 20px; /* Adds spacing from the first line */
+    
+//     .vertical-line {
+//       position: absolute;
+//       left: 4px; /* Align the vertical line to the left */
+//       top: -52px; /* Adjust to start from the top of the second line */
+//       width: 1px;
+//       height: auto; /* Will be dynamically set */
+//       background-color: blue;
+//     }
+//   }
+// }
+
+// /* Styling for the machine instance */
+// .machine-instance {
+//   grid-column: 3 / 4; /* Ensures instance details stay in column 3 */
+//   padding-left: 8px;
+// }
+
+// .machine-instance-details {
+//   padding: 4px;
+//   background: #f0f0f0;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+// }
+
+// /* Button to Add Machine */
+// .add-machine-button {
+//   padding: 8px 16px;
+//   background-color: #4caf50;
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   width: 100%;
+// }
+
+// .add-machine-button:hover {
+//   background-color: #45a049;
+// }
+
+// /* Add extra space for the button and connecting lines */
+// .selectedMachines-connecting-line.second-line {
+//   margin-top: 20px; /* Adds space between lines */
+// }
+
+// /* Ensure vertical line spans between the instances and connects the lines */
+// .vertical-line {
+//   position: absolute;
+//   left: 0;
+//   top: -10px; /* Adjust to align properly */
+//   width: 1px;
+//   height: 30px; /* Dynamic height will be handled in JS/React */
+//   background-color: blue;
+// }
+
+// /* Style for the "Add Machine" button in case there are no instances */
+// .selectedMachines-connecting-line.no-instance-line {
+//   margin-top: 20px; /* Adds spacing */
+// }
+
+// .selectedMachines-connecting-line.no-instance-line .line {
+//   width: 100%;
+//   background-color: blue;
+//   height: 1px;
+//   position: relative;
+// }
+
+// .selectedMachines-connecting-line.no-instance-line .left-icon,
+// .selectedMachines-connecting-line.no-instance-line .right-icon {
+//   display: none; /* Hide icons when no machine instance */
+// }
+
+// .selectedMachines-connecting-line.no-instance-line .selectedMachines-connecting-line-text {
+//   position: absolute;
+//   top: -10px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   background-color: #7e4b91;
+//   color: white;
+//   font-weight: bold;
+//   font-size: 8px;
+//   padding: 4px;
+//   border-radius: 12px;
+//   text-align: center;
+// }
+
+// .run-level-execution-dataset {
+//   padding: 8px;
+//   background: #e0e0e0;
+//   border: 1px solid #ccc;
+//   margin-bottom: 8px;
+//   border-radius: 4px;
+// }
+
+// .run-level-execution-dataset p {
+//   margin: 0;
+//   font-size: 12px;
+// }
+
+
+
 .grid-container {
   display: grid;
   grid-template-columns: 3fr 1fr 8fr;
-  gap: 10px;
-  border: 1px solid rgb(0, 38, 255);
+  // border: 1px solid rgb(0, 38, 255);
   padding: 24px 0;
 }
 
@@ -207,11 +391,11 @@
   grid-column: 1 / 2;
   display: flex;
   justify-content: flex-start;
-  padding: 8px;
+  // padding: 8px;
 
   input {
-    width: 100%;
-    padding: 4px;
+    width: 430px;
+    height: 32px;
   }
 }
 
@@ -223,9 +407,9 @@
 /* Connecting line and instances */
 .selectedMachines-connecting-line {
   grid-column: 2 / 3;
-  display: flex;
-  justify-content: flex-start; /* Align items from the left */
-  align-items: center;
+  // display: flex;
+  // justify-content: flex-start; /* Align items from the left */
+  // align-items: center;
   position: relative;
 
   .line {
@@ -274,7 +458,7 @@
   &.second-line {
     position: relative;
     margin-left: 20px; /* Adds spacing from the first line */
-    
+
     .vertical-line {
       position: absolute;
       left: 4px; /* Align the vertical line to the left */
@@ -289,7 +473,7 @@
 /* Styling for the machine instance */
 .machine-instance {
   grid-column: 3 / 4; /* Ensures instance details stay in column 3 */
-  padding-left: 8px;
+  
 }
 
 .machine-instance-details {
@@ -315,15 +499,15 @@
 }
 
 /* Add extra space for the button and connecting lines */
-.selectedMachines-connecting-line.second-line {
+.selectedMachines-connecting-line {
   margin-top: 20px; /* Adds space between lines */
 }
 
 /* Ensure vertical line spans between the instances and connects the lines */
 .vertical-line {
   position: absolute;
-  left: 0;
-  top: -10px; /* Adjust to align properly */
+  left: 24px;
+  top: 0; /* Adjust to align properly */
   width: 1px;
   height: 30px; /* Dynamic height will be handled in JS/React */
   background-color: blue;
@@ -360,3 +544,15 @@
   text-align: center;
 }
 
+.run-level-execution-dataset {
+  padding: 8px;
+  background: #e0e0e0;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.run-level-execution-dataset p {
+  margin: 0;
+  font-size: 12px;
+}
