@@ -100,7 +100,6 @@
 
 // export default ConnectingBranch;
 
-
 // !2222
 // import "./ConnectingBranch.scss";
 // import { machineData } from "./data";
@@ -215,9 +214,6 @@
 
 // export default ConnectingBranch;
 
-
-
-
 // import "./ConnectingBranch.scss";
 // import { machineData } from "./data";
 
@@ -330,8 +326,6 @@
 
 // export default ConnectingBranch;
 
-
-
 // import "./ConnectingBranch.scss";
 // import { machineData } from "./data";
 
@@ -433,112 +427,271 @@
 // };
 
 // export default ConnectingBranch;
+// dynamic ConnectingBranch is comming
+// import { useEffect, useRef, useState } from "react";
+// import "./ConnectingBranch.scss";
+// import { machineData } from "./data";
 
+// const calculateVerticalLineHeight = (machineInstances, datasetHeight, gap) => {
+//   const totalDataSets = machineInstances.reduce((acc, instance) => {
+//     return acc + (instance.runLevelExecutionDataSets?.length || 0);
+//   }, 0);
+
+//   return totalDataSets * datasetHeight + totalDataSets * gap;
+// };
+
+// const calculateDottedLineHeight = (runLevelExecutionDataSets, datasetHeight, gap) => {
+//   return runLevelExecutionDataSets.length * datasetHeight + (runLevelExecutionDataSets.length - 1) * gap;
+// };
+
+// const ConnectingBranch = () => {
+//   const datasetRef = useRef(null);
+//   const [verticalLineHeight, setVerticalLineHeight] = useState(0);
+//   const [dottedLineHeight, setDottedLineHeights] = useState(0);
+//   console.log("🚀 ~ ConnectingBranch ~ dottedLineHeight:", dottedLineHeight)
+
+//   useEffect(() => {
+//     const datasetHeight = datasetRef.current?.offsetHeight;
+//     const gap = 16;
+
+//     const totalHeight =
+//       machineData.executionSettings.machines.selectedMachines.reduce(
+//         (acc, data) => {
+//           const height = calculateVerticalLineHeight(
+//             data.machineInstances,
+//             datasetHeight,
+//             gap
+//           );
+//           return acc + height;
+//         },
+//         0
+//       );
+
+//       const heights = {};
+//       machineData.executionSettings.machines.selectedMachines.forEach((machine) => {
+//         machine.machineInstances.forEach((instance) => {
+//           heights[instance.clientId] = calculateDottedLineHeight(instance.runLevelExecutionDataSets, datasetHeight, gap);
+//         });
+//       });
+
+//       setVerticalLineHeight(totalHeight);
+//       setDottedLineHeights(heights);
+//   }, [machineData]);
+
+//   return (
+//     <div className="grid-container">
+//       {machineData.executionSettings.machines.selectedMachines.map(
+//         (data, index) => {
+//           return (
+//             <div className="selectedMachines" key={index}>
+//               <div className="selectedMachines-input">
+//                 <input type="text" value={data.clientId} readOnly />
+//               </div>
+
+//               {data.machineInstances.length === 0 ? (
+//                 <>
+//                   <div className="selectedMachines-connecting-line">
+//                     <div className="line">
+//                       <div className="left-icon"></div>
+//                       <div className="right-icon"></div>
+//                     </div>
+//                   </div>
+//                   <div className="machine-instance">
+//                     <button className="add-machine-button">Add Machine</button>
+//                   </div>
+//                 </>
+//               ) : (
+//                 data.machineInstances.map((instance, idx) => {
+//                   const isFirstLine = idx === 0;
+
+//                   return (
+//                     <div
+//                       className="machine-instance-row"
+//                       key={instance.clientId || idx}
+//                     >
+//                       <div
+//                         className={`selectedMachines-connecting-line ${
+//                           !isFirstLine ? "second-line" : ""
+//                         }`}
+//                       >
+//                         <div className="line">
+//                           <div className="left-icon"></div>
+//                           {instance.numberOfRuns && (
+//                             <div className="selectedMachines-connecting-line-text">
+//                               {instance.numberOfRuns} Runs
+//                             </div>
+//                           )}
+//                           <div className="right-icon"></div>
+//                         </div>
+
+//                         {isFirstLine && (
+//                           <div
+//                             className="vertical-line"
+//                             style={{ height: `${verticalLineHeight}px` }}
+//                           ></div>
+//                         )}
+
+//                       </div>
+
+//                       <div className="machine-instance">
+//                         {instance.runLevelExecutionDataSets.map(
+//                           (dataSet, datasetIdx) => (
+//                             <>
+//                                     <div className="dotted-vertical-line"
+//                         style={{height:`${30}px`}}
+//                         >
+
+//                         </div>
+//                             <div
+//                               key={datasetIdx}
+//                               className="run-level-execution-dataset"
+//                               ref={datasetIdx === 0 ? datasetRef : null}
+//                             >
+//                               <p>{dataSet.peVariableSetId}</p>
+//                             </div>
+
+//                           </>
+//                           )
+//                         )}
+//                       </div>
+
+//                       {idx === data.machineInstances.length - 1 && (
+//                         <>
+//                           <div className="selectedMachines-connecting-line second-line">
+//                             <div className="line">
+//                               <div className="left-icon"></div>
+//                               <div className="right-icon"></div>
+//                             </div>
+//                           </div>
+
+//                           <div className="machine-instance">
+//                             <button className="add-machine-button">
+//                               Add Machine
+//                             </button>
+//                           </div>
+//                         </>
+//                       )}
+//                     </div>
+//                   );
+//                 })
+//               )}
+//             </div>
+//           );
+//         }
+//       )}
+//     </div>
+//   );
+// };
+
+// export default ConnectingBranch;
+
+// !!dotted
+import { useEffect, useRef, useState } from "react";
 import "./ConnectingBranch.scss";
 import { machineData } from "./data";
 
-// Recursive function to calculate vertical line height
-const calculateVerticalLineHeight = (instances) => {
-  const instanceHeight = 35.5; // Base height for each instance
-  let totalHeight = 0;
+const calculateVerticalLineHeight = (machineInstances, datasetHeight, gap) => {
+  const totalDataSets = machineInstances.reduce((acc, instance) => {
+    return acc + (instance.runLevelExecutionDataSets?.length || 0);
+  }, 0);
 
-  instances.forEach((instance) => {
-    totalHeight += instanceHeight;
-
-    // Recursively add height for nested runLevelExecutionDataSets
-    if (instance.runLevelExecutionDataSets && instance.runLevelExecutionDataSets.length > 0) {
-      totalHeight += calculateVerticalLineHeight(instance.runLevelExecutionDataSets);
-    }
-  });
-
-  return totalHeight;
+  return totalDataSets * datasetHeight + totalDataSets * gap;
 };
 
 const ConnectingBranch = () => {
+  const datasetRef = useRef(null);
+  const [datasetHeight, setDatasetHeight] = useState(0);
+  
+  useEffect(() => {
+    if (datasetRef.current) {
+      setDatasetHeight(datasetRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
     <div className="grid-container">
-      {machineData.executionSettings.machines.selectedMachines.map(
-        (data, index) => {
-          // Calculate the vertical line height based on machineInstances
-          const verticalLineHeight = calculateVerticalLineHeight(data.machineInstances);
+      {machineData.executionSettings.machines.selectedMachines.map((data, index) => {
+        const gap = 16;
+        const verticalLineHeight = calculateVerticalLineHeight(data.machineInstances, datasetHeight, gap);
 
-          return (
-            <div className="selectedMachines" key={index}>
-              <div className="selectedMachines-input">
-                <input type="text" value={data.clientId} readOnly />
-              </div>
+        return (
+          <div className="selectedMachines" key={index}>
+            <div className="selectedMachines-input">
+              <input type="text" value={data.clientId} readOnly />
+            </div>
 
-              {data.machineInstances.length === 0 ? (
-                <>
-                  <div className="selectedMachines-connecting-line">
-                    <div className="line">
-                      <div className="left-icon"></div>
-                      <div className="right-icon"></div>
-                    </div>
+            {data.machineInstances.length === 0 ? (
+              <>
+                <div className="selectedMachines-connecting-line">
+                  <div className="line">
+                    <div className="left-icon"></div>
+                    <div className="right-icon"></div>
                   </div>
+                </div>
+                <div className="machine-instance">
+                  <button className="add-machine-button">Add Machine</button>
+                </div>
+              </>
+            ) : (
+              data.machineInstances.map((instance, idx) => {
+                const isFirstLine = idx === 0;
 
-                  <div className="machine-instance">
-                    <button className="add-machine-button">Add Machine</button>
-                  </div>
-                </>
-              ) : (
-                data.machineInstances.map((instance, idx) => {
-                  const isFirstLine = idx === 0;
-
-                  return (
-                    <div className="machine-instance-row" key={instance.clientId || idx}>
-                      <div
-                        className={`selectedMachines-connecting-line ${!isFirstLine ? "second-line" : ""}`}
-                      >
-                        <div className="line">
-                          <div className="left-icon"></div>
-                          {instance.numberOfRuns && (
-                            <div className="selectedMachines-connecting-line-text">
-                              {instance.numberOfRuns} Runs
-                            </div>
-                          )}
-                          <div className="right-icon"></div>
-                        </div>
-
-                        {/* Only add the vertical line on the first instance */}
-                        {isFirstLine && (
-                          <div
-                            className="vertical-line"
-                            style={{ height: verticalLineHeight }}
-                          ></div>
+                return (
+                  <div className="machine-instance-row" key={instance.clientId || idx}>
+                    <div
+                      className={`selectedMachines-connecting-line ${!isFirstLine ? "second-line" : ""}`}
+                    >
+                      <div className="line">
+                        <div className="left-icon"></div>
+                        {instance.numberOfRuns && (
+                          <div className="selectedMachines-connecting-line-text">
+                            {instance.numberOfRuns} Runs
+                          </div>
                         )}
+                        <div className="right-icon"></div>
                       </div>
 
-                      <div className="machine-instance">
-                        {instance.runLevelExecutionDataSets.map((dataSet, datasetIdx) => (
-                          <div key={datasetIdx} className="run-level-execution-dataset">
-                            <p>{dataSet.peVariableSetId}</p>
-                          </div>
-                        ))}
-                      </div>
-
-                      {idx === data.machineInstances.length - 1 && (
-                        <>
-                          <div className="selectedMachines-connecting-line second-line">
-                            <div className="line">
-                              <div className="left-icon"></div>
-                              <div className="right-icon"></div>
-                            </div>
-                          </div>
-
-                          <div className="machine-instance">
-                            <button className="add-machine-button">Add Machine</button>
-                          </div>
-                        </>
+                      {isFirstLine && (
+                        <div
+                          className="vertical-line"
+                          style={{ height: `${verticalLineHeight}px` }}
+                        ></div>
                       )}
                     </div>
-                  );
-                })
-              )}
-            </div>
-          );
-        }
-      )}
+
+                    <div className="machine-instance">
+                      {instance.runLevelExecutionDataSets.map((dataSet, datasetIdx) => (
+                        <div
+                          key={datasetIdx}
+                          className="run-level-execution-dataset"
+                          ref={datasetIdx === 0 ? datasetRef : null} 
+                        >
+                          <p>{dataSet.peVariableSetId}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {idx === data.machineInstances.length - 1 && (
+                      <>
+                        <div className="selectedMachines-connecting-line second-line">
+                          <div className="line">
+                            <div className="left-icon"></div>
+                            <div className="right-icon"></div>
+                          </div>
+                        </div>
+
+                        <div className="machine-instance">
+                          <button className="add-machine-button">Add Machine</button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                );
+              })
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
