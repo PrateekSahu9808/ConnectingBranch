@@ -72,55 +72,56 @@ const ParallelRunBranch: React.FC<NodeStructureProps> = () => {
 export default ParallelRunBranch;
 
 // !dyanimcally  on count
-// import React from "react";
-// import "./ParallelRunBranch.scss";
+import React from "react";
+import "./ParallelRunBranch.scss";
 
-// interface NodeStructureProps {
-//   machineCount: number;
-// }
+interface NodeStructureProps {
+  machineCount: number;
+}
 
-// const ParallelRunBranch: React.FC<NodeStructureProps> = ({ machineCount=5 }) => {
-//   const isOddMachineCount = machineCount % 2 !== 0;
-//   const halfCount = Math.floor(machineCount / 2);
+const ParallelRunBranch: React.FC<NodeStructureProps> = ({  }) => {
+  
+  const isOddMachineCount = machineCount % 2 !== 0;
+  const halfCount = Math.floor(machineCount / 2);
 
-//   return (
-//     <div className="grid-container">
-//       {/* Render top items */}
-//       {[...Array(halfCount)].map((_, index) => (
-//         <div className="grid-item top" key={`top-${index}`}>
-//           <div className="top-line-box"></div>
-//           <div className="arrow-up"></div>
-//           <div className="top-line-input"></div>
-//         </div>
-//       ))}
+  return (
+    <div className="grid-container">
+      {/* Render top items */}
+      {[...Array(halfCount)].map((_, index) => (
+        <div className="grid-item top" key={`top-${index}`}>
+          <div className="top-line-box"></div>
+          <div className="arrow-up"></div>
+          <div className="top-line-input"></div>
+        </div>
+      ))}
 
-//       {/* Script Count Box */}
-//       <div className="grid-item script-count">
-//         <div className="script-count-box">
-//           <span>Script</span>
-//           <span>1010</span>
-//         </div>
-//       </div>
+      {/* Script Count Box */}
+      <div className="grid-item script-count">
+        <div className="script-count-box">
+          <span>Script</span>
+          <span>1010</span>
+        </div>
+      </div>
 
-//       {/* Render middle item if odd machine count */}
-//       {isOddMachineCount && (
-//         <div className="grid-item middle">
-//           <div className="middle-line-box"></div>
-//           <div className="arrow-right"></div>
-//           <div className="middle-line-input"></div>
-//         </div>
-//       )}
+      {/* Render middle item if odd machine count */}
+      {isOddMachineCount && (
+        <div className="grid-item middle">
+          <div className="middle-line-box"></div>
+          <div className="arrow-right"></div>
+          <div className="middle-line-input"></div>
+        </div>
+      )}
 
-//       {/* Render bottom items */}
-//       {[...Array(halfCount)].map((_, index) => (
-//         <div className="grid-item bottom" key={`bottom-${index}`}>
-//           <div className="bottom-line-box"></div>
-//           <div className="arrow-down"></div>
-//           <div className="bottom-line-input"></div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
+      {/* Render bottom items */}
+      {[...Array(halfCount)].map((_, index) => (
+        <div className="grid-item bottom" key={`bottom-${index}`}>
+          <div className="bottom-line-box"></div>
+          <div className="arrow-down"></div>
+          <div className="bottom-line-input"></div>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-// export default ParallelRunBranch;
+export default ParallelRunBranch;
