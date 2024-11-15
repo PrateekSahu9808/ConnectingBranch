@@ -1,0 +1,46 @@
+.execution-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+
+
+  .execution-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%; /* Ensures the items align properly */
+    z-index: 1;
+
+    .curved-connector {
+      position: absolute;
+      top: -65px; /* Position the curve directly below each item box */
+      left: 0%; /* Center it relative to the item box */
+      transform: translateX(-50%); /* To exactly center the curve in front */
+      width: 40px; /* Length of the curve */
+      height: 0; /* Set to 0 to manipulate the height dynamically */
+      z-index: -1; /* Place it behind the item box */
+
+      .curve {
+        width: 30px; /* Length of the curve */
+        height: 0; /* Will be set dynamically */
+        border: 1px dotted red;
+        border-top: none;
+        border-right: none;
+        border-bottom-left-radius: 12px; /* Make the curve rounded */
+      }
+    }
+
+    .item-box {
+      background-color: #6a2a82;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      position: relative; /* Ensure the item box stays on top of the curve */
+      z-index: 1;
+    }
+  }
+}
