@@ -283,6 +283,31 @@ export const machineData = {
                   globalVariableSetId: "UUID",
                   testDataSetId: "UUID",
                 },
+                {
+                  peVariableSetId: "UUID",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },
+                {
+                  peVariableSetId: "UUID",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },
+                {
+                  peVariableSetId: "UUID",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },
+                {
+                  peVariableSetId: "UUID",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                },
+                {
+                  peVariableSetId: "UUID",
+                  globalVariableSetId: "UUID",
+                  testDataSetId: "UUID",
+                }
               ],
             },
           ],

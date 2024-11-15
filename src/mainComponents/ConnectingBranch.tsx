@@ -704,7 +704,6 @@ import { useEffect, useRef, useState } from "react";
 import "./ConnectingBranch.scss";
 import { machineData } from "./data";
 
-
 const calculateVerticalLineHeight = (machineInstances, datasetHeight, gap) => {
   const totalDataSets = machineInstances.reduce((acc, instance) => {
     return acc + (instance.runLevelExecutionDataSets?.length || 0);
@@ -716,6 +715,7 @@ const calculateVerticalLineHeight = (machineInstances, datasetHeight, gap) => {
 const ConnectingBranch = () => {
   const datasetRef = useRef(null);
   const [datasetHeight, setDatasetHeight] = useState(0);
+  console.log("🚀 ~ ConnectingBranch ~ datasetHeight:", datasetHeight);
 
   useEffect(() => {
     if (datasetRef.current) {
@@ -727,21 +727,17 @@ const ConnectingBranch = () => {
 
   // Function to calculate the height dynamically based on the position of each item
   const calculateCurveHeight = () => {
-    const heights = itemRefs.current.map((item, index) => {
-      if (index === 0) return 0; // No curve for the first item
-      const previousItem = itemRefs.current[index - 1];
-      const previousItemHeight = previousItem ? previousItem.offsetHeight : 0;
-      return previousItemHeight + 60;
+    const heights = itemRefs.current.map((index) => {
+      if (index === 0) return 0;
+      return datasetHeight * 1.5;
     });
+
     setCurveHeights(heights);
   };
+
   useEffect(() => {
     calculateCurveHeight();
-    window.addEventListener("resize", calculateCurveHeight);
-    return () => {
-      window.removeEventListener("resize", calculateCurveHeight);
-    };
-  }, []);
+  }, [datasetHeight]);
   return (
     <div className="grid-container">
       {machineData.executionSettings.machines.selectedMachines.map(
@@ -817,22 +813,39 @@ const ConnectingBranch = () => {
                                   key={data.peVariableSetId}
                                   ref={(el) => (itemRefs.current[index] = el)}
                                 >
+                                  {/* {index > 0 && (
+                                    <div className="curved-connector" style={{top:`${-datasetHeight+5}px`}}>
+                                      <div
+                                        className="curve"
+                                        style={{
+                                          height: `${curveHeights[index]}px`,
+                                          
+                                        }}
+                                      />
+                                      
+                                    </div>
+                                  )} */}
                                   {index > 0 && (
-                                    <div className="curved-connector">
+                                    <div
+                                      className="curved-connector"
+                                      style={{ top: `${-datasetHeight + 5}px` }}
+                                    >
                                       <div
                                         className="curve"
                                         style={{
                                           height: `${curveHeights[index]}px`,
                                         }}
-                                      />
+                                      >
+                                        <div className="curve-right-icon" 
+                                        ></div>
+                                        <div className='selectedMachines-connecting-line-text'>151 Script</div>
+                                      </div>
                                     </div>
                                   )}
+
                                   <div className="run-data-box">
-                                    <div>  
-                                       {`Run ${
-                                    index + 1
-                                  }`}</div>
-                                 </div>
+                                    <div>{`Run ${index + 1}`}</div>
+                                  </div>
                                 </div>
                               </>
                             </div>
