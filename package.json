@@ -12,6 +12,7 @@
   "dependencies": {
     "ff-prateeksahu": "^1.0.4",
     "react": "^18.3.1",
+    "react-archer": "^4.4.0",
     "react-dom": "^18.3.1",
     "santosh-ui-library": "^1.0.4"
   },
